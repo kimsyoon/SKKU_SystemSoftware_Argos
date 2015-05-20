@@ -1,0 +1,10 @@
+[Unit]
+Description=Start the argos service
+After=bluetooth.service
+
+[Service]
+ExecStart=/usr/bin/argos-svc
+Type=oneshot
+
+[Install]
+WantedBy=graphical.target
