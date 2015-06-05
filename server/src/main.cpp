@@ -207,7 +207,7 @@ static int argos_monitor()
 			if (data[i].tmp_sum >= data[i].prev)
 			{
 				data[i].delta = data[i].tmp_sum - data[i].prev;
-				Mbps = (data[i].delta * 8) / 1000 / 1000;
+				Mbps = (data[i].delta * 8) / 1000;
 				ALOGE("1 Mbps:%llu prev_tput:%llu", Mbps, data[i].prev_tput);
 				if (Mbps || data[i].prev_tput)
 				{
