@@ -1,4 +1,4 @@
-project(hello-tizen-svc CXX)
+project(argos-svc CXX)
 
 # Find required modules
 # PKG_CHECK_MODULES: used to check for given modules

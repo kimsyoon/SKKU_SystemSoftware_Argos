@@ -17,7 +17,7 @@ BuildRequires:  pkgconfig(dlog)
 
 ## Description string that this package's human users can understand
 %description
-Hello Tizen Service
+Argos Service
 
 
 ## Preprocess script
