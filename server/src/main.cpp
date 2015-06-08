@@ -190,7 +190,7 @@ static int argos_monitor()
  
 				if (strstr(data[i].node_name, name))
 				{
-					ALOGE("[%s:%d] %s %llu %llu\n", __func__, __LINE__, name, data[i].rx, data[i].tx);
+					//ALOGE("[%s:%d] %s %llu %llu\n", __func__, __LINE__, name, data[i].rx, data[i].tx);
 					data[i].tmp_sum += data[i].tx;
 					data[i].tmp_sum += data[i].rx;
 				}
@@ -203,18 +203,18 @@ static int argos_monitor()
 
 		for (i = 0; i < nr_dev; i++)
 		{
-			ALOGE("file write (%llu, %llu)\n", data[i].tmp_sum , data[i].prev);
+			//ALOGE("file write (%llu, %llu)\n", data[i].tmp_sum , data[i].prev);
 			if (data[i].tmp_sum >= data[i].prev)
 			{
 				data[i].delta = data[i].tmp_sum - data[i].prev;
 				Mbps = (data[i].delta * 8) / 1000;
-				ALOGE("1 Mbps:%llu prev_tput:%llu", Mbps, data[i].prev_tput);
+				//ALOGE("1 Mbps:%llu prev_tput:%llu", Mbps, data[i].prev_tput);
 				if (Mbps || data[i].prev_tput)
 				{
 					/* data size + masking */
 					sprintf(data_buf, "0x%x%x\n", Mbps, i + 1);
 //#ifdef DEBUF
-					ALOGE("2 Mbps:%lu prev_tput:%lu", Mbps, data[i].prev_tput);
+					ALOGE("[%s] Kbps:%lu", data[i].node_name, Mbps);
 //#endif
 					write(fd, data_buf, strlen(data_buf) + 1);
 				}
@@ -227,7 +227,7 @@ static int argos_monitor()
 			fclose(fp);
 
 		sleep(1);
-		ALOGE("end of while loop\n");
+		//ALOGE("end of while loop\n");
 	}
 
 err1:
